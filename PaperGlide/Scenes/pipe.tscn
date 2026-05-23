@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://ydwicwlsbnqb"]
+
+[ext_resource type="Script" uid="uid://cleohh3wb1xh2" path="res://Scripts/pipe.gd" id="1_bepn3"]
+[ext_resource type="Texture2D" uid="uid://xchso20y663v" path="res://Assets/book shelf asset.png" id="2_hnit7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sj7mh"]
+size = Vector2(122, 478)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bepn3"]
+size = Vector2(20, 19.585491)
+
+[node name="Pipe" type="Node2D" unique_id=1455822661 groups=["pipes"]]
+script = ExtResource("1_bepn3")
+
+[node name="TopPipe" type="StaticBody2D" parent="." unique_id=175730688]
+position = Vector2(-20, -416)
+
+[node name="ColorRect" type="ColorRect" parent="TopPipe" unique_id=1524974525]
+offset_top = -68.0
+offset_right = 40.0
+offset_bottom = 231.0
+scale = Vector2(1, 1.3600001)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TopPipe" unique_id=565091848]
+position = Vector2(21, 122)
+shape = SubResource("RectangleShape2D_sj7mh")
+
+[node name="BottomPipe" type="StaticBody2D" parent="." unique_id=1568997465]
+position = Vector2(-18, 132)
+
+[node name="ColorRect" type="ColorRect" parent="BottomPipe" unique_id=94093471]
+offset_top = -68.0
+offset_right = 40.0
+offset_bottom = 231.0
+scale = Vector2(1, 1.3600001)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomPipe" unique_id=1077762236]
+position = Vector2(20, 163)
+shape = SubResource("RectangleShape2D_sj7mh")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1719775208]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1951914271]
+position = Vector2(79.99999, 2)
+scale = Vector2(0.76, 5.6800003)
+shape = SubResource("RectangleShape2D_bepn3")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=959157753]
+scale = Vector2(1.618, 2.064)
+texture = ExtResource("2_hnit7")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
